@@ -1,13 +1,27 @@
-#Venis: Bem vindo
+Venis: Bem vindo
 Se quiser contruir e me ajudar melhorar o meu jogo, 
 você pode contribuir principalmente com as questões abaixo...
 
 -------------------------------------------------------------
-1 - Modificar os ToggleButtons com que estão no 
-grupo "vou add o grupo" para que quando pressionados não 
-mudem de cor.
+1 - Modificar os ToggleButtons com que estão no grupo 
+"Imutavel" para que quando pressionados não mudem de cor.
 -------------------------------------------------------------
 2 - Reduzir a quantidade de códigos para armazenar os ids dos
 ToggleButtons do jogo.
 -------------------------------------------------------------
-3 - 
+3 - Ajustar os Canvas por tras dos ToggleButtons da tela do 
+jogo
+-------------------------------------------------------------
+4 - 
+-------------------------------------------------------------
+5 - 
+-------------------------------------------------------------
+6 - 
+-------------------------------------------------------------
+7 - 
+-------------------------------------------------------------
+8 - 
+-------------------------------------------------------------
+9 - 
+-------------------------------------------------------------
+10 - 
