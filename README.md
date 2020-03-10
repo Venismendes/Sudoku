@@ -1,2 +1,1 @@
-# Sudoku
-Sudoku Mobile, Python + Kivy
+Olá mundo
