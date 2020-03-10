@@ -1,1 +1,620 @@
+<Ukivy>: #ScreenManager
+	Menu:
+		name: 'menu'
+	
+	Dificuldade: 
+		name: 'dificuldade'
+		
+	Novo_jogo:
+		name: 'novojogo'
+	
+	Recordes:
+		name: 'recordes'
+		
+<Menu>: #Menu inicial
+	BoxLayout:
+		id: menu_principal
+		orientation: 'vertical'
+		canvas:
+			Color:
+				rgba: 0.5, 0.5, 0.5, 1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		ActionBar:
+		Image:
+			source: 'sudoku3.png'
+			size_hint_y: 1
+			allow_stretch: True
+		BoxLayout:
+			orientation: 'vertical'
+			spacing: '10sp'
+			padding: '50sp', 0
+			Button:
+				text: 'Novo Jogo'
+				size_hint: 1, None
+				size: 0, '40sp'
+				#background_color: (0.1, 0.1, 0.1, 1)
+				on_release:
+					app.root.transition.direction = 'left'
+					app.root.current='dificuldade'
+			Button:
+				text: 'Recordes'
+				size_hint: 1,  None
+				size: 0, '40sp'
+				on_release:
+					app.root.transition.direction = 'left'
+					app.root.current='recordes'
+			Button:
+				text: 'Remover Anúncios'
+				size_hint: 1, None
+				size: 0, '40sp'
+				on_release: 
+			Button:
+				text: 'Sair'
+				size_hint: 1, None
+				size: 0, '40sp'
+				on_release: app.stop()
+			
+			
+<Dificuldade>: #Tela pra escolher a dificuldade do jogo
+	BoxLayout:
+		orientation: 'vertical'
+		canvas:
+			Color:
+				rgba: 0.5, 0.5, 0.5, 1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		ActionBar:
+			ActionView:
+				ActionPrevious:
+					title: 'Sudoku'
+					on_release:
+						app.root.transition.direction = 'right'
+						app.root.current='menu'
 
+		
+		BoxLayout: #Box com os botões
+			orientation: 'vertical'
+			padding: '80sp', '0sp', '80sp', '50sp'
+			spacing: '40sp'
+			Button:
+				size_hint: 1, None
+				size: 0, '40sp'
+				text: 'Fácil'
+				on_press: root.novojogo.facil()
+				on_release:
+					app.root.transition.direction = 'left'
+					app.root.current='novojogo'
+			Button:
+				size_hint: 1, None
+				size: 0, '40sp'
+				id: medio
+				text: 'médio'
+				on_press: root.novojogo.medio()
+				on_release:
+					app.root.transition.direction = 'left'
+					app.root.current='novojogo'
+			Button:
+				size_hint: 1, None
+				size: 0, '40sp'
+				text: 'Difícil'
+				on_press: root.novojogo.dificil()
+				on_release:
+					app.root.transition.direction = 'left'
+					app.root.current='novojogo'
+		
+	
+<Novo_jogo>: #Tela do jogo
+	BoxLayout:
+		id: tela_jogo_completa
+		orientation: 'vertical'
+		spacing: '10sp'
+		canvas:
+			Color:
+				rgba: 0.5, 0.5, 0.5, 1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+				
+		ActionBar:
+			ActionView:
+				ActionPrevious:
+					title: 'Sudoku'
+					on_release: root.pop_inicio()
+					
+		BoxLayout: #Tela com 2 telas dentro
+			id: tela_jogo_1
+			orientation:'vertical'
+			size_hint_y: 10
+			
+			BoxLayout: #Tela onde fica o jogo
+				id: tela_jogo_2
+				size_hint_y: 10
+				padding: '13sp', '18sp', '13sp', '58sp'
+				orientation: 'vertical'
+				Label:
+					id: tempo
+					text: '00:00:00'
+				GridLayout:
+					id: tela_jogo_3
+					cols: 9
+					rows: 9
+					padding: '2sp', '2sp'
+					spacing: '2sp'
+					size_hint: 1, 10
+					canvas:
+						Color:
+							rgba: 0, 0, 0, 1
+						Rectangle:
+							size: self.size
+							pos: self.pos
+							
+						Color:
+							rgba: 0.5, 0.5, 0.5, 1
+						Rectangle: #7
+							size: (self.width / 3) - 6, (self.height / 3) - 8
+							pos: self.x + 4, self.y + 6
+						Rectangle: #8
+							size: (self.width / 3) - 8, (self.height / 3) - 8
+							pos: (self.x + 4) + (self.width / 3), self.y + 6
+						Rectangle:#9
+							size: (self.width / 3) - 6, (self.height / 3) - 8
+							pos: (self.x + 2) + (self.width / 3 * 2), self.y + 6
+						Rectangle: #4
+							size: (self.width / 3) - 6, (self.height / 3) - 5
+							pos: self.x + 4, (self.y + 3) + (self.height / 3)
+						Rectangle: #5
+							size: (self.width / 3) - 8, (self.height / 3) - 5
+							pos: (self.x + 4) + (self.width / 3), (self.y + 3) + (self.height / 3)
+						Rectangle: #6
+							size: (self.width / 3) - 6, (self.height / 3) - 5
+							pos: (self.x + 2) + (self.width / 3 * 2), (self.y + 3) + (self.height / 3)
+						Rectangle: #1
+							size: (self.width / 3) - 6, (self.height / 3) - 6
+							pos: self.x + 4, (self.y + 3) + (self.height / 3 * 2)
+						Rectangle: #2
+							size: (self.width / 3) - 8, (self.height / 3) - 6
+							pos: (self.x + 4) + (self.width / 3), (self.y + 3) + (self.height / 3 * 2)
+						Rectangle:#3
+							size: (self.width / 3) - 6, (self.height / 3) - 6
+							pos: (self.x + 2) + (self.width / 3 * 2), (self.y + 3) + (self.height / 3 * 2)
+							
+					ToggleButton: #Primeira Linha
+						font_size: 40
+						text:
+						id: l11
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l12
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l13
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l14
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l15
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l16
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l17
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l18
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l19
+					ToggleButton: #Segunda Linha
+						font_size: 40
+						text:
+						id: l21
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l22
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l23
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l24
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l25
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l26
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l27
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l28
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l29
+					ToggleButton: #Terceira Linha
+						font_size: 40
+						text:
+						id: l31
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l32
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l33
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l34
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l35
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l36
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l37
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l38
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l39
+					ToggleButton: #Quarta Linha
+						font_size: 40
+						text:
+						id: l41
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l42
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l43
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l44
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l45
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l46
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l47
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l48
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l49
+					ToggleButton: #Quinta Linha
+						font_size: 40
+						text:
+						id: l51
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l52
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l53
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l54
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l55
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l56
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l57
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l58
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l59
+					ToggleButton: #Sexta Linha
+						font_size: 40
+						text:
+						id: l61
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l62
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l63
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l64
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l65
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l66
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l67
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l68
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l69
+					ToggleButton: #Sétima Linha
+						font_size: 40
+						text:
+						id: l71
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l72
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l73
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l74
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l75
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l76
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l77
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l78
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l79
+					ToggleButton: #Oitava Linha
+						font_size: 40
+						text:
+						id: l81
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l82
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l83
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l84
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l85
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l86
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l87
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l88
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l89
+					ToggleButton: #Nona Linha
+						font_size: 40
+						text:
+						id: l91
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l92
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l93
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l94
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l95
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l96
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l97
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l98
+					ToggleButton:
+						font_size: 40
+						text:
+						id: l99
+									
+				
+			BoxLayout: #Botoes de 1 a 9
+				id: tela_botoes
+				orientation:'horizontal'
+				Button:
+					id: b1
+					text: '1'
+					on_release: root.mude_n(root.ids.b1.text)
+				Button:
+					id: b2
+					text: '2'
+					on_release: root.mude_n('2')
+				Button:
+					id: b3
+					text: '3'
+					on_release: root.mude_n('3')
+				Button:
+					id: b4
+					text: '4'
+					on_release: root.mude_n('4')
+				Button:
+					id: b5
+					text: '5'
+					on_release: root.mude_n('5')
+				Button:
+					id: b6
+					text: '6'
+					on_release: root.mude_n('6')
+				Button:
+					id: b7
+					text: '7'
+					on_release: root.mude_n('7')
+				Button:
+					id: b8
+					text: '8'
+					on_release: root.mude_n('8')
+				Button:
+					id: b9
+					text: '9'
+					on_release: root.mude_n('9')
+				
+					
+			Button:
+				id: b10
+				text: 'Apagar'
+				on_release: root.mude_n('')
+				
+		BoxLayout: #Pequeno menu na tela do jogo
+			id: jogo_menu
+			spacing: 10
+			orientation: 'horizontal'
+			Button:
+				text: 'Novo jogo'
+				on_release: root.pop_novojogo()
+			Button:
+				text: 'Início'
+				on_release: root.pop_inicio()
+			Button:
+				text: 'Verificar'
+				on_release: root.verificar()
+				
+<Recordes>:
+	name: 'recordes'
+	BoxLayout: #Página dos recordes
+		orientation: 'vertical'
+		id: tela_completa
+		spacing: '2sp'
+		canvas:
+			Color:
+				rgba: 0.4, 0.4, 0.4, 1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		ActionBar:
+			ActionView:
+				ActionPrevious:
+					title: 'Sudoku'
+					on_release:
+						app.root.transition.direction = 'right'
+						app.root.current='menu'
+		BoxLayout:
+			id: cabecalho
+			size_hint: 1, 1
+			canvas:
+				Color:
+					rgba: 0.5, 0.5, 0.5, 1
+				Rectangle:
+					size: self.size
+					pos: self.x, self.y
+			Label:
+				text: 'Rank'
+				font_size: 30
+				size_hint: 0.8,  1
+				color: 0, 0, 0, 1
+			Label:
+				text: 'Nome'
+				font_size: 30
+				size_hint: 2.2, 1
+				color: 0, 0, 0, 1
+			Label:
+				text: 'Tempo'
+				font_size: 30
+				size_hint: 1, 1
+				color: 0, 0, 0, 1
+					
+		GridLayout: #Onde os ranks serão exibidos
+			id: rank
+			size_hint: 1, 10
+			cols: 1
+			rows: 10
+			spacing: '2sp'
+			
