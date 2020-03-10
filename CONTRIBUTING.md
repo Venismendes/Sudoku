@@ -1,3 +1,4 @@
+-------------------------------------------------------------
 Venis: Bem vindo
 Se quiser contruir e me ajudar melhorar o meu jogo, 
 você pode contribuir principalmente com as questões abaixo...
@@ -25,3 +26,4 @@ jogo
 9 - 
 -------------------------------------------------------------
 10 - 
+-------------------------------------------------------------
