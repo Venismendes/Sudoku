@@ -1,5 +1,4 @@
--------------------------------------------------------------
-Venis: Bem vindo
+Venismendes: Bem vindo
 Se quiser contruir e me ajudar melhorar o meu jogo, 
 você pode contribuir principalmente com as questões abaixo...
 
@@ -13,7 +12,7 @@ ToggleButtons do jogo.
 3 - Ajustar os Canvas por tras dos ToggleButtons da tela do 
 jogo
 -------------------------------------------------------------
-4 - 
+4 - nada ainda...
 -------------------------------------------------------------
 5 - 
 -------------------------------------------------------------
@@ -27,3 +26,5 @@ jogo
 -------------------------------------------------------------
 10 - 
 -------------------------------------------------------------
+
+**Obrigado a quem contribuir**
