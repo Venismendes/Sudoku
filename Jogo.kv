@@ -11,6 +11,7 @@
 	Recordes:
 		name: 'recordes'
 		
+#=================================
 <Menu>: #Menu inicial
 	BoxLayout:
 		id: menu_principal
@@ -56,7 +57,7 @@
 				size: 0, '40sp'
 				on_release: app.stop()
 			
-			
+#================================
 <Dificuldade>: #Tela pra escolher a dificuldade do jogo
 	BoxLayout:
 		orientation: 'vertical'
@@ -105,7 +106,7 @@
 					app.root.transition.direction = 'left'
 					app.root.current='novojogo'
 		
-	
+#=================================
 <Novo_jogo>: #Tela do jogo
 	BoxLayout:
 		id: tela_jogo_completa
@@ -567,6 +568,7 @@
 				text: 'Verificar'
 				on_release: root.verificar()
 				
+#=================================
 <Recordes>:
 	name: 'recordes'
 	BoxLayout: #Página dos recordes
