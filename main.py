@@ -285,6 +285,7 @@ class Novo_jogo(Screen):
 
 		nj.open()
 	
+	#verificar tamanho do nome
 	def verificar_nome(self, *args):
 			if len(nome.text) <= 11:
 				self.recorde.finalizado()
@@ -417,7 +418,8 @@ class Novo_jogo(Screen):
 			
 			nome = TextInput(
 			text='Seu Nome', 
-			size_hint=(3, 1))
+			size_hint=(3, 1),
+			multiline=False)
 			
 			bnome = Button(
 			text='Enviar', 
