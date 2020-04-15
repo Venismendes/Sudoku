@@ -17,15 +17,15 @@ lista_completa = su = []
 s = m = h = 0
 tempo = '00:00:00'
 
-#Gerenciador das telas
+#=======Gerenciador das telas=======
 class Ukivy(ScreenManager):
 	pass
 		
-#Menu principal	
+#==========Menu principal==========
 class Menu(Screen):
 	pass
 
-#Tela para escolher a dificuldade do jogo
+#========Dificuldade do jogo========
 class Dificuldade(Screen):
 	def __init__(self, **kwargs):
 		super(Screen, self).__init__(**kwargs)
@@ -33,7 +33,7 @@ class Dificuldade(Screen):
 		self.novojogo = Novo_jogo()
 	pass
 
-#Tela onde o jogo será exibido	
+#==========Tela do Jogo==========
 class Novo_jogo(Screen):
 	def __init__(self, **kwargs):
 		super(Screen, self).__init__(**kwargs)
@@ -284,6 +284,11 @@ class Novo_jogo(Screen):
 		boxnj.add_widget(nj_nao)
 
 		nj.open()
+	
+	def verificar_nome(self, *args):
+			if len(nome.text) <= 11:
+				self.recorde.finalizado()
+				self.vv.dismiss()
 		
 	#Verificação ao final do jogo
 	def verificar(self, *args):
@@ -397,7 +402,7 @@ class Novo_jogo(Screen):
 			boxvv = BoxLayout(
 			orientation='vertical')
 		
-			vv = Popup(
+			self.vv = Popup(
 			title='', 
 			content=boxvv, 
 			size_hint=(None, None), 
@@ -416,8 +421,7 @@ class Novo_jogo(Screen):
 			
 			bnome = Button(
 			text='Enviar', 
-			on_release=self.recorde.finalizado,
-			on_press=vv.dismiss)
+			on_release=self.verificar_nome)
 			
 			boxnome = BoxLayout()
 			
@@ -428,7 +432,7 @@ class Novo_jogo(Screen):
 			boxvv.add_widget(boxnome)
 			
 			self.cronometro.cancel()
-			vv.open()
+			self.vv.open()
 		else:
 			boxin = BoxLayout(
 			orientation='vertical')
@@ -450,7 +454,7 @@ class Novo_jogo(Screen):
 			boxin.add_widget(ok)		
 			vp.open()
 				
-#Tela dos recordes incompleta ainda
+#=========== Recordes ===========
 class Recordes(Screen):
 	def __init__(self, **kwargs):
 		super(Screen, self).__init__(**kwargs)
@@ -585,7 +589,7 @@ class Recordes(Screen):
 			pass
 		self.ids.rank.clear_widgets()
 		
-#BoxLayout com um canvas cinza
+#===BoxLayout com um canvas cinza===
 class Bl(BoxLayout):
 	def __init__(self, **kwargs):
 		super(Bl, self).__init__(**kwargs)
@@ -609,7 +613,7 @@ class Bl(BoxLayout):
 			size=(self.width, self.height), 
 			pos=(self.x, self.y))
 		
-				
+#========= Classe principal =========
 class Jogo(App):
 	def build(self):
 		return Ukivy()
