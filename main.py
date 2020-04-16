@@ -63,120 +63,24 @@ class Novo_jogo(Screen):
 		su = sudoku()
 		sui = sudoku_i(su, dificuldade)
 		
-		l11 = self.ids.l11
-		l12 = self.ids.l12
-		l13 = self.ids.l13
-		l14 = self.ids.l14
-		l15 = self.ids.l15
-		l16 = self.ids.l16
-		l17 = self.ids.l17
-		l18 = self.ids.l18
-		l19 = self.ids.l19
-		
-		l21 = self.ids.l21
-		l22 = self.ids.l22
-		l23 = self.ids.l23
-		l24 = self.ids.l24
-		l25 = self.ids.l25
-		l26 = self.ids.l26
-		l27 = self.ids.l27
-		l28 = self.ids.l28
-		l29 = self.ids.l29
-		
-		l31 = self.ids.l31
-		l32 = self.ids.l32
-		l33 = self.ids.l33
-		l34 = self.ids.l34
-		l35 = self.ids.l35
-		l36 = self.ids.l36
-		l37 = self.ids.l37
-		l38 = self.ids.l38
-		l39 = self.ids.l39
-		
-		l41 = self.ids.l41
-		l42 = self.ids.l42
-		l43 = self.ids.l43
-		l44 = self.ids.l44
-		l45 = self.ids.l45
-		l46 = self.ids.l46
-		l47 = self.ids.l47
-		l48 = self.ids.l48
-		l49 = self.ids.l49
-		
-		l51 = self.ids.l51
-		l52 = self.ids.l52
-		l53 = self.ids.l53
-		l54 = self.ids.l54
-		l55 = self.ids.l55
-		l56 = self.ids.l56
-		l57 = self.ids.l57
-		l58 = self.ids.l58
-		l59 = self.ids.l59
-		
-		l61 = self.ids.l61
-		l62 = self.ids.l62
-		l63 = self.ids.l63
-		l64 = self.ids.l64
-		l65 = self.ids.l65
-		l66 = self.ids.l66
-		l67 = self.ids.l67
-		l68 = self.ids.l68
-		l69 = self.ids.l69
-		
-		l71 = self.ids.l71
-		l72 = self.ids.l72
-		l73 = self.ids.l73
-		l74 = self.ids.l74
-		l75 = self.ids.l75
-		l76 = self.ids.l76
-		l77 = self.ids.l77
-		l78 = self.ids.l78
-		l79 = self.ids.l79
-		
-		l81 = self.ids.l81
-		l82 = self.ids.l82
-		l83 = self.ids.l83
-		l84 = self.ids.l84
-		l85 = self.ids.l85
-		l86 = self.ids.l86
-		l87 = self.ids.l87
-		l88 = self.ids.l88
-		l89 = self.ids.l89
-		
-		l91 = self.ids.l91
-		l92 = self.ids.l92
-		l93 = self.ids.l93
-		l94 = self.ids.l94
-		l95 = self.ids.l95
-		l96 = self.ids.l96
-		l97 = self.ids.l97
-		l98 = self.ids.l98
-		l99 = self.ids.l99
-		
-		lista_completa = [
-		l11, l12, l13, l14, l15, l16, l17, l18, l19, 
-		l21, l22, l23, l24, l25, l26, l27, l28, l29, 
-		l31, l32, l33, l34, l35, l36, l37, l38, l39, 
-		l41, l42, l43, l44, l45, l46, l47, l48, l49, 
-		l51, l52, l53, l54, l55, l56, l57, l58, l59, 
-		l61, l62, l63, l64, l65, l66, l67, l68, l69, 
-		l71, l72, l73, l74, l75, l76, l77, l78, l79, 
-		l81, l82, l83, l84, l85, l86, l87, l88, l89, 
-		l91, l92, l93, l94, l95, l96, l97, l98, l99
-		]
+		lista_ids = self.ids.keys()
+		lista_completa = []
+		for i in lista_ids:
+			if i[0] == 'l':
+				lista_completa.append(i)
 
 		n1 = 0
 		n2 = 0
 		#Separando os botões do jogo
 		for i in lista_completa:
-			i.text = str(sui[n1][n2])
+			self.ids[i].text = str(sui[n1][n2])
 			numero = cint(sui[n1][n2])
 			if numero == 0:
 				#Botões vazios
-				i.group = 'sudo'
+				self.ids[i].group = 'sudo'
 			else:
 				#Botões já preenchidos
-				i.group = 'imutavel'
+				self.ids[i].group = 'imutavel'
 			
 			n2 += 1
 			if n2 > 8:
@@ -225,9 +129,9 @@ class Novo_jogo(Screen):
 		global lista_completa
 		
 		for i in lista_completa:
-			if i.state == 'down' and i.group == 'sudo':
-				i.text=text
-				i.color = 0, 0, 0, 1
+			if self.ids[i].state == 'down' and self.ids[i].group == 'sudo':
+				self.ids[i].text=text
+				self.ids[i].color = 0, 0, 0, 1
 				
 	#Para não ir para o inicio de vez
 	def pop_inicio(self, *args):
@@ -295,107 +199,25 @@ class Novo_jogo(Screen):
 	def verificar(self, *args):
 		global su, tempo, nome
 		
-		l11 = cint(self.ids.l11.text)
-		l12 = cint(self.ids.l12.text)
-		l13 = cint(self.ids.l13.text)
-		l14 = cint(self.ids.l14.text)
-		l15 = cint(self.ids.l15.text)
-		l16 = cint(self.ids.l16.text)
-		l17 = cint(self.ids.l17.text)
-		l18 = cint(self.ids.l18.text)	
-		l19 = cint(self.ids.l19.text)
-			
-		l21 = cint(self.ids.l21.text)
-		l22 = cint(self.ids.l22.text)
-		l23 = cint(self.ids.l23.text)
-		l24 = cint(self.ids.l24.text)
-		l25 = cint(self.ids.l25.text)
-		l26 = cint(self.ids.l26.text)
-		l27 = cint(self.ids.l27.text)
-		l28 = cint(self.ids.l28.text)
-		l29 = cint(self.ids.l29.text)
-			
-		l31 = cint(self.ids.l31.text)
-		l32 = cint(self.ids.l32.text)
-		l33 = cint(self.ids.l33.text)
-		l34 = cint(self.ids.l34.text)
-		l35 = cint(self.ids.l35.text)
-		l36 = cint(self.ids.l36.text)
-		l37 = cint(self.ids.l37.text)
-		l38 = cint(self.ids.l38.text)
-		l39 = cint(self.ids.l39.text)
-			
-		l41 = cint(self.ids.l41.text)
-		l42 = cint(self.ids.l42.text)
-		l43 = cint(self.ids.l43.text)
-		l44 = cint(self.ids.l44.text)
-		l45 = cint(self.ids.l45.text)
-		l46 = cint(self.ids.l46.text)
-		l47 = cint(self.ids.l47.text)
-		l48 = cint(self.ids.l48.text)
-		l49 = cint(self.ids.l49.text)
-			
-		l51 = cint(self.ids.l51.text)
-		l52 = cint(self.ids.l52.text)
-		l53 = cint(self.ids.l53.text)
-		l54 = cint(self.ids.l54.text)
-		l55 = cint(self.ids.l55.text)
-		l56 = cint(self.ids.l56.text)
-		l57 = cint(self.ids.l57.text)
-		l58 = cint(self.ids.l58.text)
-		l59 = cint(self.ids.l59.text)
-			
-		l61 = cint(self.ids.l61.text)
-		l62 = cint(self.ids.l62.text)
-		l63 = cint(self.ids.l63.text)
-		l64 = cint(self.ids.l64.text)
-		l65 = cint(self.ids.l65.text)
-		l66 = cint(self.ids.l66.text)
-		l67 = cint(self.ids.l67.text)
-		l68 = cint(self.ids.l68.text)
-		l69 = cint(self.ids.l69.text)
-			
-		l71 = cint(self.ids.l71.text)
-		l72 = cint(self.ids.l72.text)
-		l73 = cint(self.ids.l73.text)
-		l74 = cint(self.ids.l74.text)
-		l75 = cint(self.ids.l75.text)
-		l76 = cint(self.ids.l76.text)
-		l77 = cint(self.ids.l77.text)
-		l78 = cint(self.ids.l78.text)
-		l79 = cint(self.ids.l79.text)
-			
-		l81 = cint(self.ids.l81.text)
-		l82 = cint(self.ids.l82.text)
-		l83 = cint(self.ids.l83.text)
-		l84 = cint(self.ids.l84.text)
-		l85 = cint(self.ids.l85.text)
-		l86 = cint(self.ids.l86.text)
-		l87 = cint(self.ids.l87.text)
-		l88 = cint(self.ids.l88.text)
-		l89 = cint(self.ids.l89.text)
-			
-		l91 = cint(self.ids.l91.text)
-		l92 = cint(self.ids.l92.text)
-		l93 = cint(self.ids.l93.text)
-		l94 = cint(self.ids.l94.text)
-		l95 = cint(self.ids.l95.text)
-		l96 = cint(self.ids.l96.text)
-		l97 = cint(self.ids.l97.text)
-		l98 = cint(self.ids.l98.text)
-		l99 = cint(self.ids.l99.text)
-			
+		#Lista de ids dos ToggleButtons
+		lista_ids = self.ids.keys()
+		lista_ids2 = []
+		for i in lista_ids:
+			if i[0] == 'l':
+				tg = cint(self.ids[i].text)
+				lista_ids2.append(tg)
+				
+		#Armazenando para verificar
 		lista_completa = [
-		[l11, l12, l13, l14, l15, l16, l17, l18, l19], 
-		[l21, l22, l23, l24, l25, l26, l27, l28, l29], 
-		[l31, l32, l33, l34, l35, l36, l37, l38, l39], 
-		[l41, l42, l43, l44, l45, l46, l47, l48, l49], 
-		[l51, l52, l53, l54, l55, l56, l57, l58, l59], 
-		[l61, l62, l63, l64, l65, l66, l67, l68, l69], 
-		[l71, l72, l73, l74, l75, l76, l77, l78, l79], 
-		[l81, l82, l83, l84, l85, l86, l87, l88, l89], 
-		[l91, l92, l93, l94, l95, l96, l97, l98, l99]
-		]
+		lista_ids2[0:9],
+		lista_ids2[9:18],
+		lista_ids2[18:27],
+		lista_ids2[27:36],
+		lista_ids2[36:45],
+		lista_ids2[45:54],
+		lista_ids2[54:63],
+		lista_ids2[63:72],
+		lista_ids2[72:81]]
 		
 		verificar = verificar_sudoku(lista_completa)
 		
