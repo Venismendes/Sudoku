@@ -3,28 +3,17 @@ Se quiser contruir e me ajudar melhorar o meu jogo,
 você pode contribuir principalmente com as questões abaixo...
 
 -------------------------------------------------------------
-1 - Modificar os ToggleButtons com que estão no grupo 
-"Imutavel" para que quando pressionados não mudem de cor.
+1 - Modificar o background dos ToggleButtons do grupo 
+"imutaveis", para que fique igual aos outros.
 -------------------------------------------------------------
-2 - Reduzir a quantidade de códigos para armazenar os ids dos
-ToggleButtons do jogo.
+2 - Criar uma divisão entre os recordes de cada dificuldade
 -------------------------------------------------------------
 3 - Ajustar os Canvas por tras dos ToggleButtons da tela do 
 jogo
 -------------------------------------------------------------
-4 - nada ainda...
+4 - Mudar as cores
 -------------------------------------------------------------
-5 - 
--------------------------------------------------------------
-6 - 
--------------------------------------------------------------
-7 - 
--------------------------------------------------------------
-8 - 
--------------------------------------------------------------
-9 - 
--------------------------------------------------------------
-10 - 
+5 - Corrigir Bugs que encontrar
 -------------------------------------------------------------
 
 **Obrigado a quem contribuir**
