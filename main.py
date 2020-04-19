@@ -78,9 +78,14 @@ class Novo_jogo(Screen):
 			if numero == 0:
 				#Botões vazios
 				self.ids[i].group = 'sudo'
+				self.ids[i].state = 'normal'
+				self.ids[i].disabled = False
 			else:
 				#Botões já preenchidos
 				self.ids[i].group = 'imutavel'
+				self.ids[i].color = (1, 1, 1, 1)
+				self.ids[i].state = 'normal'
+				self.ids[i].disabled = True
 			
 			n2 += 1
 			if n2 > 8:
@@ -209,15 +214,15 @@ class Novo_jogo(Screen):
 				
 		#Armazenando para verificar
 		lista_completa = [
-		lista_ids2[0:9],
-		lista_ids2[9:18],
-		lista_ids2[18:27],
-		lista_ids2[27:36],
-		lista_ids2[36:45],
-		lista_ids2[45:54],
-		lista_ids2[54:63],
-		lista_ids2[63:72],
-		lista_ids2[72:81]]
+			lista_ids2[0:9],
+			lista_ids2[9:18],
+			lista_ids2[18:27],
+			lista_ids2[27:36],
+			lista_ids2[36:45],
+			lista_ids2[45:54],
+			lista_ids2[54:63],
+			lista_ids2[63:72],
+			lista_ids2[72:81]]
 		
 		verificar = verificar_sudoku(lista_completa)
 		
