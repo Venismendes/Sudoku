@@ -75,17 +75,21 @@ class Novo_jogo(Screen):
 		for i in lista_completa:
 			self.ids[i].text = str(sui[n1][n2])
 			numero = cint(sui[n1][n2])
+			
 			if numero == 0:
 				#Botões vazios
 				self.ids[i].group = 'sudo'
 				self.ids[i].state = 'normal'
 				self.ids[i].disabled = False
+				self.ids[i].background_normal = 'tb.png'
+				self.ids[i].background_down = 'tb1.png'
 			else:
 				#Botões já preenchidos
 				self.ids[i].group = 'imutavel'
-				self.ids[i].color = (1, 1, 1, 1)
+				self.ids[i].color = 1, 1, 1, 1
 				self.ids[i].state = 'normal'
 				self.ids[i].disabled = True
+				self.ids[i].background_disabled_normal = 'tb.png'
 			
 			n2 += 1
 			if n2 > 8:
@@ -136,7 +140,7 @@ class Novo_jogo(Screen):
 		for i in lista_completa:
 			if self.ids[i].state == 'down' and self.ids[i].group == 'sudo':
 				self.ids[i].text=text
-				self.ids[i].color = 0, 0, 0, 1
+				self.ids[i].color = 1, 1, 1, 1
 				
 	#Para não ir para o inicio de vez
 	def pop_inicio(self, *args):
