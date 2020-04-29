@@ -86,7 +86,7 @@ class Novo_jogo(Screen):
 			else:
 				#Botões já preenchidos
 				self.ids[i].group = 'imutavel'
-				self.ids[i].color = 1, 1, 1, 1
+				self.ids[i].color = 0, 0, 0, 1
 				self.ids[i].state = 'normal'
 				self.ids[i].disabled = True
 				self.ids[i].background_disabled_normal = 'tb.png'
@@ -297,30 +297,57 @@ class Recordes(Screen):
 	
 	#Mudando pra tela dos recordes
 	def finalizado(self, *args):
-			self.inserir_nr()
-			App.get_running_app().root.transition.direction = 'left'
-			App.get_running_app().root.current='recordes'
+		global dificuldade
+		self.inserir_nr()
+		App.get_running_app().root.transition.direction = 'left'
+		
+		if dificuldade == 'facil':
+			App.get_running_app().root.current='recordes_facil'
+		elif dificuldade == 'medio':
+			App.get_running_app().root.current='recordes_medio'
+		elif dificuldade == 'dificil':
+			App.get_running_app().root.current='recordes_dificil'
 	
 	#Para inserir um novo recorde
 	def inserir_nr(self, *args):
-		global tempo, nome
+		global tempo, nome, dificuldade
 		
 		if nome.text == '':
 			#Nome padrão
 			nome.text = 'Sem Nome'
 		
 		try:
-			#Carregando o Arquivo salvo
-			with open('dados.json', 'r') as dados:
-				salvos = json.load(dados)
+			if dificuldade == 'facil':
+				#Carregando recordes facil
+				with open('dados.json', 'r') as dados:
+					salvos = json.load(dados)
+			elif dificuldade == 'medio':
+				#Carregando recordes medio
+				with open('dados2.json', 'r') as dados:
+					salvos = json.load(dados)
+			elif dificuldade == 'dificil':
+				#Carregando recordes dificil
+				with open('dados3.json', 'r') as dados:
+					salvos = json.load(dados)
+			
 			lista_rank = salvos[0]
 			lista_nome = salvos[1]
 			lista_tempo = salvos[2]
 		except:
-			#Valores padrões caso não exusta o arquivo json
-			lista_rank = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-			lista_nome = ['Venis', '', '', '', '', '', '', '', '', '']
-			lista_tempo = ['00:04:47', '', '', '', '', '', '', '', '', '']
+			#Valores padrões caso não exista o arquivo json
+			if dificuldade == 'facil':
+				lista_rank = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+				lista_nome = ['Venis', '', '', '', '', '', '', '', '', '']
+				lista_tempo = ['00:04:47', '', '', '', '', '', '', '', '', '']
+			elif dificuldade == 'medio':
+				lista_rank = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+				lista_nome = ['Venis', '', '', '', '', '', '', '', '', '']
+				lista_tempo = ['00:08:54', '', '', '', '', '', '', '', '', '']
+			elif dificuldade == 'dificil':
+				lista_rank = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+				lista_nome = ['Venis', '', '', '', '', '', '', '', '', '']
+				lista_tempo = ['00:13:23', '', '', '', '', '', '', '', '', '']
+		
 		
 		c = 0 #Comparando o resultado com os recordes
 		for i in lista_tempo:
@@ -356,12 +383,28 @@ class Recordes(Screen):
 		self.salvar_dados(salvos)
 	
 	#Salvando os dados em json
-	def salvar_dados(self, salvos, *args):	
-		with open('dados.json', 'w') as dados:
-			json.dump(salvos, dados)
-			
+	def salvar_dados(self, salvos, *args):
+		if dificuldade == 'facil':
+			with open('dados.json', 'w') as dados:
+				json.dump(salvos, dados)
+		elif dificuldade == 'medio':
+			with open('dados2.json', 'w') as dados:
+				json.dump(salvos, dados)
+		elif dificuldade == 'dificil':
+			with open('dados3.json', 'w') as dados:
+				json.dump(salvos, dados)
 		
 	#Carregando os dados nos recordes
+	pass
+
+#===============================
+class Recordes_facil(Screen):
+	def __init__(self, **kwargs):
+		super(Screen, self).__init__(**kwargs)
+		pass
+		self.cr = Recordes()
+		
+	
 	def carregar_dados(self, *args):
 		try:
 			with open('dados.json', 'r') as dados:
@@ -370,13 +413,12 @@ class Recordes(Screen):
 			lista_rank = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 			lista_nome = ['Venis', '', '', '', '', '', '', '', '', '']
 			lista_tempo = ['00:04:47', '', '', '', '', '', '', '', '', '', '']
-			
+				
 			salvos = [
 			lista_rank,
 			lista_nome,
 			lista_tempo
 			]
-			
 		#Laço pra criar os box e adicionar os valores
 		c = 0
 		for jogador in salvos[0]:
@@ -406,10 +448,13 @@ class Recordes(Screen):
 			novo_jogador.add_widget(tempo_jogador)
 				
 			self.ids.rank.add_widget(novo_jogador)
-			c += 1			
-
+			c += 1
+	
+	
 	#Carregar os recordes na página
 	def on_pre_enter(self, *args):
+		global dificuldade
+		dificuldade = 'facil'
 		self.carregar_dados()
 		
 	#Ao sair da página salvar os recordes
@@ -417,11 +462,158 @@ class Recordes(Screen):
 		try:
 			with open('dados.json', 'r') as dados:
 				salvos = json.load(dados)
-			self.salvar_dados(salvos)
+			self.cr.salvar_dados(salvos)
 		except:
 			pass
 		self.ids.rank.clear_widgets()
+	pass
+	
+#===============================
+class Recordes_medio(Screen):
+	def __init__(self, **kwargs):
+		super(Screen, self).__init__(**kwargs)
+		pass
+		self.cr = Recordes()
 		
+	
+	def carregar_dados(self, *args):
+		global dificuldade
+		try:
+			with open('dados2.json', 'r') as dados:
+				salvos = json.load(dados)
+		except FileNotFoundError:
+			lista_rank = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+			lista_nome = ['Venis', '', '', '', '', '', '', '', '', '']
+			lista_tempo = ['00:08:54', '', '', '', '', '', '', '', '', '', '']
+				
+			salvos = [
+			lista_rank,
+			lista_nome,
+			lista_tempo
+			]
+		
+		#Laço pra criar os box e adicionar os valores
+		c = 0
+		for jogador in salvos[0]:
+			novo_jogador = Bl(
+			size_hint=(1, 1))
+				
+			nova_posicao = Label(
+			text=salvos[0][c], 
+			font_size=30, 
+			size_hint=(0.8, 1),
+			color=(0, 0, 0, 1))
+				
+			nome_jogador = Label(
+			text=salvos[1][c], 
+			font_size=30, 
+			size_hint=(2.2, 1),
+			color=(0, 0, 0, 1))
+				
+			tempo_jogador = Label(
+			text=salvos[2][c], 
+			font_size=30, 
+			size_hint=(1, 1),
+			color=(0, 0, 0, 1))
+			
+			novo_jogador.add_widget(nova_posicao)
+			novo_jogador.add_widget(nome_jogador)
+			novo_jogador.add_widget(tempo_jogador)
+				
+			self.ids.rank.add_widget(novo_jogador)
+			c += 1
+	
+	
+	#Carregar os recordes na página
+	def on_pre_enter(self, *args):
+		global dificuldade
+		dificuldade = 'medio'
+		self.carregar_dados()
+		
+	#Ao sair da página salvar os recordes
+	def  on_leave(self, *args):
+		try:
+			with open('dados2.json', 'r') as dados:
+				salvos = json.load(dados)
+			self.cr.salvar_dados(salvos)
+		except:
+			pass
+		self.ids.rank.clear_widgets()
+	pass
+	
+#===============================
+class Recordes_dificil(Screen):
+	def __init__(self, **kwargs):
+		super(Screen, self).__init__(**kwargs)
+		pass
+		self.cr = Recordes()
+	
+	def carregar_dados(self, *args):
+		global dificuldade
+		
+		try:
+			with open('dados3.json', 'r') as dados:
+				salvos = json.load(dados)
+		except FileNotFoundError:
+			lista_rank = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+			lista_nome = ['Venis', '', '', '', '', '', '', '', '', '']
+			lista_tempo = ['00:13:23', '', '', '', '', '', '', '', '', '', '']
+				
+			salvos = [
+			lista_rank,
+			lista_nome,
+			lista_tempo
+			]
+		
+		#Laço pra criar os box e adicionar os valores
+		c = 0
+		for jogador in salvos[0]:
+			novo_jogador = Bl(
+			size_hint=(1, 1))
+				
+			nova_posicao = Label(
+			text=salvos[0][c], 
+			font_size=30, 
+			size_hint=(0.8, 1),
+			color=(0, 0, 0, 1))
+				
+			nome_jogador = Label(
+			text=salvos[1][c], 
+			font_size=30, 
+			size_hint=(2.2, 1),
+			color=(0, 0, 0, 1))
+				
+			tempo_jogador = Label(
+			text=salvos[2][c], 
+			font_size=30, 
+			size_hint=(1, 1),
+			color=(0, 0, 0, 1))
+			
+			novo_jogador.add_widget(nova_posicao)
+			novo_jogador.add_widget(nome_jogador)
+			novo_jogador.add_widget(tempo_jogador)
+				
+			self.ids.rank.add_widget(novo_jogador)
+			c += 1
+	
+	
+	#Carregar os recordes na página
+	def on_pre_enter(self, *args):
+		global dificuldade
+		dificuldade = 'dificil'
+		self.carregar_dados()
+		
+	#Ao sair da página salvar os recordes
+	def  on_leave(self, *args):
+		try:
+			with open('dados3.json', 'r') as dados:
+				salvos = json.load(dados)
+			self.cr.salvar_dados(salvos)
+		except:
+			pass
+		self.ids.rank.clear_widgets()
+	pass
+	
 #===BoxLayout com um canvas cinza===
 class Bl(BoxLayout):
 	def __init__(self, **kwargs):
