@@ -10,6 +10,15 @@
 	
 	Recordes:
 		name: 'recordes'
+	
+	Recordes_facil:
+		name: 'recordes_facil'
+	
+	Recordes_medio:
+		name: 'recordes_medio'
+		
+	Recordes_dificil:
+		name: 'recordes_dificil'
 		
 #=================================
 <Menu>: #Menu inicial
@@ -97,7 +106,7 @@
 				size_hint: 1, None
 				size: 0, '40sp'
 				id: medio
-				text: 'médio'
+				text: 'Médio'
 				on_press: root.novojogo.medio()
 				on_release:
 					app.root.transition.direction = 'left'
@@ -582,10 +591,57 @@
 			Button:
 				text: 'Verificar'
 				on_release: root.verificar()
-				
 #=================================
 <Recordes>:
 	name: 'recordes'
+	
+	BoxLayout:
+		orientation: 'vertical'
+		canvas:
+			Color:
+				rgba: 0.5, 0.5, 0.5, 1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		ActionBar:
+			ActionView:
+				ActionPrevious:
+					title: 'Sudoku'
+					on_release:
+						app.root.transition.direction = 'right'
+						app.root.current='menu'
+
+		
+		BoxLayout: #Box com os botões
+			orientation: 'vertical'
+			padding: '80sp', '0sp', '80sp', '50sp'
+			spacing: '40sp'
+			Button:
+				size_hint: 1, None
+				size: 0, '40sp'
+				text: 'Fácil'
+				on_release:
+					app.root.transition.direction = 'left'
+					app.root.current='recordes_facil'
+			Button:
+				size_hint: 1, None
+				size: 0, '40sp'
+				id: medio
+				text: 'Médio'
+				on_release:
+					app.root.transition.direction = 'left'
+					app.root.current='recordes_medio'
+			Button:
+				size_hint: 1, None
+				size: 0, '40sp'
+				text: 'Difícil'
+				on_release:
+					app.root.transition.direction = 'left'
+					app.root.current='recordes_dificil'
+		
+#=================================
+<Recordes_facil>:
+	name: 'recordes_facil'
 	BoxLayout: #Página dos recordes
 		orientation: 'vertical'
 		id: tela_completa
@@ -602,7 +658,111 @@
 					title: 'Sudoku'
 					on_release:
 						app.root.transition.direction = 'right'
-						app.root.current='menu'
+						app.root.current='recordes'
+		BoxLayout:
+			id: cabecalho
+			size_hint: 1, 1
+			canvas:
+				Color:
+					rgba: 0.5, 0.5, 0.5, 1
+				Rectangle:
+					size: self.size
+					pos: self.x, self.y
+			Label:
+				text: 'Rank'
+				font_size: 30
+				size_hint: 0.8,  1
+				color: 0, 0, 0, 1
+			Label:
+				text: 'Nome'
+				font_size: 30
+				size_hint: 2.2, 1
+				color: 0, 0, 0, 1
+			Label:
+				text: 'Tempo'
+				font_size: 30
+				size_hint: 1, 1
+				color: 0, 0, 0, 1
+					
+		GridLayout: #Onde os ranks serão exibidos
+			id: rank
+			size_hint: 1, 10
+			cols: 1
+			rows: 10
+			spacing: '2sp'
+
+#=================================
+<Recordes_medio>:
+	name: 'recordes_medio'
+	BoxLayout: #Página dos recordes
+		orientation: 'vertical'
+		id: tela_completa
+		spacing: '2sp'
+		canvas:
+			Color:
+				rgba: 0.4, 0.4, 0.4, 1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		ActionBar:
+			ActionView:
+				ActionPrevious:
+					title: 'Sudoku'
+					on_release:
+						app.root.transition.direction = 'right'
+						app.root.current='recordes'
+		BoxLayout:
+			id: cabecalho
+			size_hint: 1, 1
+			canvas:
+				Color:
+					rgba: 0.5, 0.5, 0.5, 1
+				Rectangle:
+					size: self.size
+					pos: self.x, self.y
+			Label:
+				text: 'Rank'
+				font_size: 30
+				size_hint: 0.8,  1
+				color: 0, 0, 0, 1
+			Label:
+				text: 'Nome'
+				font_size: 30
+				size_hint: 2.2, 1
+				color: 0, 0, 0, 1
+			Label:
+				text: 'Tempo'
+				font_size: 30
+				size_hint: 1, 1
+				color: 0, 0, 0, 1
+					
+		GridLayout: #Onde os ranks serão exibidos
+			id: rank
+			size_hint: 1, 10
+			cols: 1
+			rows: 10
+			spacing: '2sp'
+			
+#=================================
+<Recordes_dificil>:
+	name: 'recordes_dificil'
+	BoxLayout: #Página dos recordes
+		orientation: 'vertical'
+		id: tela_completa
+		spacing: '2sp'
+		canvas:
+			Color:
+				rgba: 0.4, 0.4, 0.4, 1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		ActionBar:
+			ActionView:
+				ActionPrevious:
+					title: 'Sudoku'
+					on_release:
+						app.root.transition.direction = 'right'
+						app.root.current='recordes'
 		BoxLayout:
 			id: cabecalho
 			size_hint: 1, 1
