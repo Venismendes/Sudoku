@@ -1,26 +1,26 @@
 <Ukivy>: #ScreenManager
 	Menu:
 		name: 'menu'
-	
-	Dificuldade: 
+
+	Dificuldade:
 		name: 'dificuldade'
-		
+
 	Novo_jogo:
 		name: 'novojogo'
-	
+
 	Recordes:
 		name: 'recordes'
-	
+
 	Recordes_facil:
 		name: 'recordes_facil'
-	
+
 	Recordes_medio:
 		name: 'recordes_medio'
-		
+
 	Recordes_dificil:
 		name: 'recordes_dificil'
-		
-#=================================
+
+# =================================================================================================================
 <Menu>: #Menu inicial
 	BoxLayout:
 		id: menu_principal
@@ -59,7 +59,7 @@
 				text: 'Remover Anúncios'
 				size_hint: 1, None
 				size: 0, '40sp'
-				on_release: 
+				on_release:
 			Button:
 				text: 'Sair'
 				size_hint: 1, None
@@ -70,8 +70,8 @@
 				size_hint: 1, None
 				size: 0, '40sp'
 				align: 'center'
-			
-#================================
+
+# =================================================================================================================
 <Dificuldade>: #Tela pra escolher a dificuldade do jogo
 	BoxLayout:
 		orientation: 'vertical'
@@ -89,7 +89,7 @@
 						app.root.transition.direction = 'right'
 						app.root.current='menu'
 
-		
+
 		BoxLayout: #Box com os botões
 			orientation: 'vertical'
 			padding: '80sp', '0sp', '80sp', '50sp'
@@ -119,8 +119,8 @@
 				on_release:
 					app.root.transition.direction = 'left'
 					app.root.current='novojogo'
-		
-#=================================
+
+# =================================================================================================================
 <Novo_jogo>: #Tela do jogo
 	BoxLayout:
 		id: tela_jogo_completa
@@ -132,18 +132,18 @@
 			Rectangle:
 				size: self.size
 				pos: self.pos
-				
+
 		ActionBar:
 			ActionView:
 				ActionPrevious:
 					title: 'Sudoku'
 					on_release: root.pop_inicio()
-					
+
 		BoxLayout: #Tela com 2 telas dentro
 			id: tela_jogo_1
 			orientation:'vertical'
 			size_hint_y: 10
-			
+
 			BoxLayout: #Tela onde fica o jogo
 				id: tela_jogo_2
 				size_hint_y: 10
@@ -165,47 +165,47 @@
 						Rectangle:
 							size: self.size
 							pos: self.pos
-							
+
 						Color:
 							rgba: 0.5, 0.5, 0.5, 1
-#=================================
+# =================================================================================================================
 						Rectangle: #7
 							size: (self.width / 3) - 4, (self.height / 3) - 5
 							pos: self.x + 3, self.y + 3
-#=================================
+# =================================================================================================================
 						Rectangle: #8
 							size: (self.width / 3) - 6, (self.height / 3) - 5
 							pos: (self.x + 3) + (self.width / 3), self.y + 3
-#=================================
+# =================================================================================================================
 						Rectangle:#9
 							size: (self.width / 3) - 4, (self.height / 3) - 5
 							pos: (self.x + 1) + (self.width / 3 * 2), self.y + 3
-#=================================
+# =================================================================================================================
 						Rectangle: #4
 							size: (self.width / 3) - 4, (self.height / 3) - 4
 							pos: self.x + 3, (self.y + 2) + (self.height / 3)
-#=================================
+# =================================================================================================================
 						Rectangle: #5
 							size: (self.width / 3) - 6, (self.height / 3) - 4
 							pos: (self.x + 3) + (self.width / 3), (self.y + 2) + (self.height / 3)
-#=================================
+# =================================================================================================================
 						Rectangle: #6
 							size: (self.width / 3) - 4, (self.height / 3) - 4
 							pos: (self.x + 1) + (self.width / 3 * 2), (self.y + 2) + (self.height / 3)
-#=================================
+# =================================================================================================================
 						Rectangle: #1
 							size: (self.width / 3) - 4, (self.height / 3) - 4
 							pos: self.x + 3, (self.y + 1) + (self.height / 3 * 2)
-#=================================
+# =================================================================================================================
 						Rectangle: #2
 							size: (self.width / 3) - 6, (self.height / 3) - 4
 							pos: (self.x + 3) + (self.width / 3), (self.y + 1) + (self.height / 3 * 2)
-#=================================
+# =================================================================================================================
 						Rectangle:#3
 							size: (self.width / 3) - 4, (self.height / 3) - 4
 							pos: (self.x + 1) + (self.width / 3 * 2), (self.y + 1) + (self.height / 3 * 2)
-#=================================
-							
+# =================================================================================================================
+
 					ToggleButton: #Primeira Linha
 						font_size: 40
 						text:
@@ -530,8 +530,8 @@
 						font_size: 40
 						text:
 						id: l99
-									
-				
+
+
 			BoxLayout: #Botoes de 1 a 9
 				id: tela_botoes
 				orientation:'horizontal'
@@ -571,13 +571,13 @@
 					id: b9
 					text: '9'
 					on_release: root.mude_n('9')
-				
-					
+
+
 			Button:
 				id: b10
 				text: 'Apagar'
 				on_release: root.mude_n('')
-				
+
 		BoxLayout: #Pequeno menu na tela do jogo
 			id: jogo_menu
 			spacing: 10
@@ -594,7 +594,7 @@
 #=================================
 <Recordes>:
 	name: 'recordes'
-	
+
 	BoxLayout:
 		orientation: 'vertical'
 		canvas:
@@ -611,7 +611,7 @@
 						app.root.transition.direction = 'right'
 						app.root.current='menu'
 
-		
+
 		BoxLayout: #Box com os botões
 			orientation: 'vertical'
 			padding: '80sp', '0sp', '80sp', '50sp'
@@ -638,8 +638,8 @@
 				on_release:
 					app.root.transition.direction = 'left'
 					app.root.current='recordes_dificil'
-		
-#=================================
+
+# =================================================================================================================
 <Recordes_facil>:
 	name: 'recordes_facil'
 	BoxLayout: #Página dos recordes
@@ -683,7 +683,7 @@
 				font_size: 30
 				size_hint: 1, 1
 				color: 0, 0, 0, 1
-					
+
 		GridLayout: #Onde os ranks serão exibidos
 			id: rank
 			size_hint: 1, 10
@@ -691,7 +691,7 @@
 			rows: 10
 			spacing: '2sp'
 
-#=================================
+# =================================================================================================================
 <Recordes_medio>:
 	name: 'recordes_medio'
 	BoxLayout: #Página dos recordes
@@ -735,15 +735,15 @@
 				font_size: 30
 				size_hint: 1, 1
 				color: 0, 0, 0, 1
-					
+
 		GridLayout: #Onde os ranks serão exibidos
 			id: rank
 			size_hint: 1, 10
 			cols: 1
 			rows: 10
 			spacing: '2sp'
-			
-#=================================
+
+# =================================================================================================================
 <Recordes_dificil>:
 	name: 'recordes_dificil'
 	BoxLayout: #Página dos recordes
@@ -787,11 +787,10 @@
 				font_size: 30
 				size_hint: 1, 1
 				color: 0, 0, 0, 1
-					
+
 		GridLayout: #Onde os ranks serão exibidos
 			id: rank
 			size_hint: 1, 10
 			cols: 1
 			rows: 10
 			spacing: '2sp'
-			
