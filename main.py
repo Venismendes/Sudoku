@@ -46,15 +46,15 @@ class Novo_jogo(Screen):
         pass
         self.recorde = Recordes()
 
-    def facil(self):
+    def facil(self, *args):
         global dificuldade
         dificuldade = 'facil'
 
-    def medio(self):
+    def medio(self, *args):
         global dificuldade
         dificuldade = 'medio'
 
-    def dificil(self):
+    def dificil(self, *args):
         global dificuldade
         dificuldade = 'dificil'
 
@@ -109,7 +109,7 @@ class Novo_jogo(Screen):
         self.ids.tempo.text = '00:00:00'
 
     # Cronômetro do jogo
-    def contador(self):
+    def contador(self, *args):
         global s, m, h, tempo
         s += 1
         if s >= 59:
@@ -135,7 +135,7 @@ class Novo_jogo(Screen):
         self.ids.tempo.text = str(tempo)
 
     # Para mudar os números manual
-    def mude_n(self, text):
+    def mude_n(self, text, *args):
         global lista_completa
 
         for i in lista_completa:
@@ -144,7 +144,7 @@ class Novo_jogo(Screen):
                 self.ids[i].color = 1, 1, 1, 1
 
     # Para não ir para o inicio de vez
-    def pop_inicio(self):
+    def pop_inicio(self, *args):
         box_i = BoxLayout()
 
         i = Popup(
@@ -153,7 +153,7 @@ class Novo_jogo(Screen):
             size_hint=(None, None),
             size=('240sp', '95sp'))
 
-        def voltar_inicio():
+        def voltar_inicio(self, *args):
             App.get_running_app().root.transition.direction = 'right'
             App.get_running_app().root.current = 'menu'
             i.dismiss()
@@ -172,7 +172,7 @@ class Novo_jogo(Screen):
         i.open()
 
     # Para não iniciar um novo jogo de vez
-    def pop_novojogo(self):
+    def pop_novojogo(self, *args):
         boxnj = BoxLayout()
 
         nj = Popup(
@@ -181,7 +181,7 @@ class Novo_jogo(Screen):
             size_hint=(None, None),
             size=('240sp', '95sp'))
 
-        def novojogo():
+        def novojogo(self, *args):
             App.get_running_app().root.transition.direction = 'right'
             App.get_running_app().root.current = 'dificuldade'
             nj.dismiss()
@@ -200,7 +200,7 @@ class Novo_jogo(Screen):
         nj.open()
 
     # verificar tamanho do nome
-    def verificar_nome(self):
+    def verificar_nome(self, *args):
         if len(nome.text) <= 11:
             self.recorde.finalizado()
             self.vv.dismiss()
@@ -231,7 +231,7 @@ class Novo_jogo(Screen):
 
         verificar = verificar_sudoku(lista_completa)
 
-        if verificar == True:
+        if verificar != True:
             boxvv = BoxLayout(
                 orientation='vertical')
 
@@ -298,7 +298,7 @@ class Recordes(Screen):
         pass
 
     # Mudando pra tela dos recordes
-    def finalizado(self):
+    def finalizado(self, *args):
         global dificuldade
         self.inserir_nr()
         App.get_running_app().root.transition.direction = 'left'
@@ -311,7 +311,7 @@ class Recordes(Screen):
             App.get_running_app().root.current = 'recordes_dificil'
 
     # Para inserir um novo recorde
-    def inserir_nr(self):
+    def inserir_nr(self, *args):
         global tempo, nome, dificuldade
 
         if nome.text == '':
