@@ -231,7 +231,7 @@ class Novo_jogo(Screen):
 
         verificar = verificar_sudoku(lista_completa)
 
-        if verificar != True:
+        if verificar == True:
             boxvv = BoxLayout(
                 orientation='vertical')
 
