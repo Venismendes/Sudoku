@@ -83,15 +83,15 @@ class Novo_jogo(Screen):
                 self.ids[i].group = 'sudo'
                 self.ids[i].state = 'normal'
                 self.ids[i].disabled = False
-                self.ids[i].background_normal = 'tb.png'
-                self.ids[i].background_down = 'tb1.png'
+                self.ids[i].background_normal = 'images/toggle_normal.png'
+                self.ids[i].background_down = 'images/toggle_down.png'
             else:
                 # Botões já preenchidos
                 self.ids[i].group = 'imutavel'
                 self.ids[i].color = 0, 0, 0, 1
                 self.ids[i].state = 'normal'
                 self.ids[i].disabled = True
-                self.ids[i].background_disabled_normal = 'tb.png'
+                self.ids[i].background_disabled_normal = 'images/toggle_normal.png'
 
             n2 += 1
             if n2 > 8:
