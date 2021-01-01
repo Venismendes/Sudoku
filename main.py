@@ -88,7 +88,7 @@ class Novo_jogo(Screen):
             else:
                 # Botões já preenchidos
                 self.ids[i].group = 'imutavel'
-                self.ids[i].color = 0, 0, 0, 1
+                self.ids[i].color = 0.913, 0.945, 0.968, 1
                 self.ids[i].state = 'normal'
                 self.ids[i].disabled = True
                 self.ids[i].background_disabled_normal = 'images/toggle_normal.png'
@@ -430,19 +430,19 @@ class Recordes_facil(Screen):
                 text=salvos[0][c],
                 font_size=30,
                 size_hint=(0.8, 1),
-                color=(0, 0, 0, 1))
+                color=(0.913, 0.945, 0.968, 1))
 
             nome_jogador = Label(
                 text=salvos[1][c],
                 font_size=30,
                 size_hint=(2.2, 1),
-                color=(0, 0, 0, 1))
+                color=(0.913, 0.945, 0.968, 1))
 
             tempo_jogador = Label(
                 text=salvos[2][c],
                 font_size=30,
                 size_hint=(1, 1),
-                color=(0, 0, 0, 1))
+                color=(0.913, 0.945, 0.968, 1))
 
             novo_jogador.add_widget(nova_posicao)
             novo_jogador.add_widget(nome_jogador)
@@ -503,19 +503,19 @@ class Recordes_medio(Screen):
                 text=salvos[0][c],
                 font_size=30,
                 size_hint=(0.8, 1),
-                color=(0, 0, 0, 1))
+                color=(0.913, 0.945, 0.968, 1))
 
             nome_jogador = Label(
                 text=salvos[1][c],
                 font_size=30,
                 size_hint=(2.2, 1),
-                color=(0, 0, 0, 1))
+                color=(0.913, 0.945, 0.968, 1))
 
             tempo_jogador = Label(
                 text=salvos[2][c],
                 font_size=30,
                 size_hint=(1, 1),
-                color=(0, 0, 0, 1))
+                color=(0.913, 0.945, 0.968, 1))
 
             novo_jogador.add_widget(nova_posicao)
             novo_jogador.add_widget(nome_jogador)
@@ -543,7 +543,7 @@ class Recordes_medio(Screen):
     pass
 
 
-# ===============================
+# =================================================================================================================
 class Recordes_dificil(Screen):
     def __init__(self, **kwargs):
         super(Screen, self).__init__(**kwargs)
@@ -577,19 +577,19 @@ class Recordes_dificil(Screen):
                 text=salvos[0][c],
                 font_size=30,
                 size_hint=(0.8, 1),
-                color=(0, 0, 0, 1))
+                color=(0.913, 0.945, 0.968, 1))
 
             nome_jogador = Label(
                 text=salvos[1][c],
                 font_size=30,
                 size_hint=(2.2, 1),
-                color=(0, 0, 0, 1))
+                color=(0.913, 0.945, 0.968, 1))
 
             tempo_jogador = Label(
                 text=salvos[2][c],
                 font_size=30,
                 size_hint=(1, 1),
-                color=(0, 0, 0, 1))
+                color=(0.913, 0.945, 0.968, 1))
 
             novo_jogador.add_widget(nova_posicao)
             novo_jogador.add_widget(nome_jogador)
@@ -635,7 +635,7 @@ class Bl(BoxLayout):
     def atualizar(self, *args):
         self.canvas.before.clear()
         with self.canvas.before:
-            Color(rgba=(0.5, 0.5, 0.5, 1))
+            Color(rgba=(0.133, 0.454, 0.647, 1))
 
             Rectangle(
                 size=(self.width, self.height),
