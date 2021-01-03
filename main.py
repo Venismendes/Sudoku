@@ -243,14 +243,14 @@ class Novo_jogo(Screen):
 
             voce_venceu = Label(
                 text='VOCÊ VENCEU!!!',
-                font_size=30)
+                font_size=25)
 
             tempo_final = Label(
                 text=str(tempo))
 
             nome = TextInput(
                 text='Seu Nome',
-                size_hint=(3, 1),
+                size_hint=(3, 1.2),
                 multiline=False)
 
             bnome = Button(
@@ -428,20 +428,20 @@ class Recordes_facil(Screen):
 
             nova_posicao = Label(
                 text=salvos[0][c],
-                font_size=30,
+                font_size=25,
                 size_hint=(0.8, 1),
                 color=(0.913, 0.945, 0.968, 1))
 
             nome_jogador = Label(
                 text=salvos[1][c],
-                font_size=30,
-                size_hint=(2.2, 1),
+                font_size=25,
+                size_hint=(1.8, 1),
                 color=(0.913, 0.945, 0.968, 1))
 
             tempo_jogador = Label(
                 text=salvos[2][c],
-                font_size=30,
-                size_hint=(1, 1),
+                font_size=25,
+                size_hint=(1.2, 1),
                 color=(0.913, 0.945, 0.968, 1))
 
             novo_jogador.add_widget(nova_posicao)
@@ -501,20 +501,20 @@ class Recordes_medio(Screen):
 
             nova_posicao = Label(
                 text=salvos[0][c],
-                font_size=30,
+                font_size=25,
                 size_hint=(0.8, 1),
                 color=(0.913, 0.945, 0.968, 1))
 
             nome_jogador = Label(
                 text=salvos[1][c],
-                font_size=30,
-                size_hint=(2.2, 1),
+                font_size=25,
+                size_hint=(1.8, 1),
                 color=(0.913, 0.945, 0.968, 1))
 
             tempo_jogador = Label(
                 text=salvos[2][c],
-                font_size=30,
-                size_hint=(1, 1),
+                font_size=25,
+                size_hint=(1.2, 1),
                 color=(0.913, 0.945, 0.968, 1))
 
             novo_jogador.add_widget(nova_posicao)
@@ -575,20 +575,20 @@ class Recordes_dificil(Screen):
 
             nova_posicao = Label(
                 text=salvos[0][c],
-                font_size=30,
+                font_size=25,
                 size_hint=(0.8, 1),
                 color=(0.913, 0.945, 0.968, 1))
 
             nome_jogador = Label(
                 text=salvos[1][c],
-                font_size=30,
-                size_hint=(2.2, 1),
+                font_size=25,
+                size_hint=(1.8, 1),
                 color=(0.913, 0.945, 0.968, 1))
 
             tempo_jogador = Label(
                 text=salvos[2][c],
-                font_size=30,
-                size_hint=(1, 1),
+                font_size=25,
+                size_hint=(1.2, 1),
                 color=(0.913, 0.945, 0.968, 1))
 
             novo_jogador.add_widget(nova_posicao)
