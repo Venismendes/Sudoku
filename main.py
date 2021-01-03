@@ -88,10 +88,10 @@ class Novo_jogo(Screen):
             else:
                 # Botões já preenchidos
                 self.ids[i].group = 'imutavel'
-                self.ids[i].color = 0.913, 0.945, 0.968, 1
                 self.ids[i].state = 'normal'
                 self.ids[i].disabled = True
                 self.ids[i].background_disabled_normal = 'images/toggle_normal.png'
+                self.ids[i].color = 0.513, 0.545, 0.568, 1
 
             n2 += 1
             if n2 > 8:
