@@ -85,6 +85,7 @@ class Novo_jogo(Screen):
                 self.ids[i].disabled = False
                 self.ids[i].background_normal = 'images/toggle_normal.png'
                 self.ids[i].background_down = 'images/toggle_down.png'
+                self.ids[i].color = 0.913, 0.945, 0.968, 1
             else:
                 # Botões já preenchidos
                 self.ids[i].group = 'imutavel'
@@ -140,8 +141,8 @@ class Novo_jogo(Screen):
 
         for i in lista_completa:
             if self.ids[i].state == 'down' and self.ids[i].group == 'sudo':
+                self.ids[i].color = 0.913, 0.945, 0.968, 1
                 self.ids[i].text = text
-                self.ids[i].color = 1, 1, 1, 1
 
     # Para não ir para o inicio de vez
     def pop_inicio(self, *args):
