@@ -150,6 +150,7 @@ class Novo_jogo(Screen):
 
         i = Popup(
             title='Ir para o início?',
+            background_color=(0.133, 0.454, 0.647, 1),
             content=box_i,
             size_hint=(None, None),
             size=('240sp', '95sp'))
@@ -161,10 +162,14 @@ class Novo_jogo(Screen):
 
         i_sim = Button(
             text='sim',
+            color=(0.913, 0.945, 0.968, 1),
+            background_color=(0.133, 0.454, 0.647, 1),
             on_release=voltar_inicio)
 
         i_nao = Button(
             text='não',
+            color=(0.913, 0.945, 0.968, 1),
+            background_color=(0.133, 0.454, 0.647, 1),
             on_release=i.dismiss)
 
         box_i.add_widget(i_sim)
@@ -178,6 +183,7 @@ class Novo_jogo(Screen):
 
         nj = Popup(
             title='Iniciar novo jogo?',
+            background_color=(0.133, 0.454, 0.647, 1),
             content=boxnj,
             size_hint=(None, None),
             size=('240sp', '95sp'))
@@ -189,10 +195,14 @@ class Novo_jogo(Screen):
 
         nj_sim = Button(
             text='sim',
+            color=(0.913, 0.945, 0.968, 1),
+            background_color=(0.133, 0.454, 0.647, 1),
             on_release=novojogo)
 
         nj_nao = Button(
             text='não',
+            color=(0.913, 0.945, 0.968, 1),
+            background_color=(0.133, 0.454, 0.647, 1),
             on_release=nj.dismiss)
 
         boxnj.add_widget(nj_sim)
@@ -238,15 +248,18 @@ class Novo_jogo(Screen):
 
             self.vv = Popup(
                 title='',
+                background_color=(0.133, 0.454, 0.647, 1),
                 content=boxvv,
                 size_hint=(None, None),
                 size=('250sp', '120sp'))
 
             voce_venceu = Label(
                 text='VOCÊ VENCEU!!!',
+                color=(0.913, 0.945, 0.968, 1),
                 font_size=25)
 
             tempo_final = Label(
+                color=(0.913, 0.945, 0.968, 1),
                 text=str(tempo))
 
             nome = TextInput(
@@ -256,6 +269,8 @@ class Novo_jogo(Screen):
 
             bnome = Button(
                 text='Enviar',
+                color=(0.913, 0.945, 0.968, 1),
+                background_color=(0.133, 0.454, 0.647, 1),
                 on_release=self.verificar_nome)
 
             boxnome = BoxLayout()
@@ -274,15 +289,19 @@ class Novo_jogo(Screen):
 
             vp = Popup(
                 title='',
+                background_color=(0.133, 0.454, 0.647, 1),
                 content=boxin,
                 size_hint=(None, None),
                 size=('250sp', '120sp'))
 
             incom = Label(
-                text='Sudoku Incompleto')
+                text='Sudoku Incompleto',
+                color=(0.913, 0.945, 0.968, 1))
 
             ok = Button(
                 text='Ok, continuar',
+                color=(0.913, 0.945, 0.968, 1),
+                background_color=(0.133, 0.454, 0.647, 1),
                 on_release=vp.dismiss)
 
             boxin.add_widget(incom)
