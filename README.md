@@ -18,3 +18,5 @@ Ferramentas usadas para o desenvolvimento desse app:
 |---     |---   |---|
 
 * Autor/Desenvolvedor: **Venismendes**
+
+.
