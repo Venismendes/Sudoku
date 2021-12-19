@@ -1,5 +1,6 @@
 from Sudoku import sudoku, sudoku_i, verificar_sudoku
 from c_int import cint
+import json
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -9,7 +10,6 @@ from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.clock import Clock
 from kivy.graphics import Color, Rectangle
-import json
 
 # Variáveis globais, que serão usadas em várias classes e funções diferentes
 dificuldade = nome = ''
@@ -665,6 +665,7 @@ class Bl(BoxLayout):
 # ============================================= Classe principal ==================================================
 class Jogo(App):
     def build(self):
+        self.icon = 'images/sudoku.png'
         return Ukivy()
 
 
