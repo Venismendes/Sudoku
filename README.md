@@ -17,4 +17,4 @@ Ferramentas usadas para o desenvolvimento desse app:
 | Python | Kivy | Json |
 |---     |---   |---|
 
-* Autor/Desenvolvedor: **Venismendes**
+* Autor/Desenvolvedor: **Venismendes** 
